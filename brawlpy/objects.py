@@ -25,10 +25,10 @@ class Player:
     club - The club that the player is in
     """
 
-    def __init__(self,name,tag,nameColor,icon_id,trophies,expLevel,expPoints,club,highestTrophies,soloVictories,duoVictories,teamVictories,bestRoboRumbleTime,bestTimeAsBigBrawler,brawlers,battleLog):
+    def __init__(self,name,tag,icon_id,trophies,expLevel,expPoints,club,highestTrophies,soloVictories,duoVictories,teamVictories,bestRoboRumbleTime,bestTimeAsBigBrawler,brawlers,battleLog):
         self.name = name
         self.tag = tag
-        self.nameColor = nameColor
+        #self.nameColor = nameColor
         self.icon_id = icon_id
         self.trophies = trophies
         self.expLevel = expLevel
