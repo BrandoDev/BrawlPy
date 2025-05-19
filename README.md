@@ -9,11 +9,11 @@
 A basic wrapper for the [Brawl Stars API](https://developer.brawlstars.com/#/).
 
 ## Features
- * Easy to use with OOP design
+ * Easy to use with OOP design and Context Manager
  * Get a player's profile and battle log by just a tag
  * Get a club and all its member
- * Get the top 200 clubs , players, or a specific brawler in the world or a region
- * Get Information about a map, event, brawler!!!
+ * Get the top 200 clubs, players, or a specific brawler in the world or a region
+ * Get Information about a map, event, brawler!
 
 ## Installation
 To install the library run the following command:
@@ -34,7 +34,8 @@ import asyncio
 client = brawlpy.Client('your_api_key_here') # Enter your api key here
 
 async def main():
-    player = await client.get_player("JP20RUR2")
+    async with client:
+        player = await client.get_player("JP20RUR2")
     
     print(player)
 
@@ -51,7 +52,8 @@ import asyncio
 client = brawlpy.Client('your_api_key_here') # Enter your api key here
 
 async def brawlPy():
-    club = await client.get_club("PVQ0RP90")
+    async with client:
+        club = await client.get_club("PVQ0RP90")
     
     print(club)
 

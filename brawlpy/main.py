@@ -10,23 +10,44 @@ import json
 from .objects import *
 
 class Client:
-    def __init__(self,token):
-
+    def __init__(self, token):
         self.TOKEN = token
-        self.loop = asyncio.get_event_loop()
         self.api = API()
         self.headers = {
-            'Authorization': 'Bearer {}'.format(token)
+            'Authorization': f'Bearer {token}'
         }
+        self.session = None
 
-        self.session = aiohttp.ClientSession(loop=self.loop,headers=self.headers)
+    async def initialize(self):
+        if self.session is None or self.session.closed:
+            self.session = aiohttp.ClientSession(
+                headers=self.headers
+            )
+        return self
 
-    async def request(self,url):
-        async with self.session.get(url=url) as resp:
+    async def close(self):
+        if self.session:
+            await self.session.close()
+
+    async def __aenter__(self):
+        await self.initialize()
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):
+        await self.close()
+
+    async def request(self, url, method="GET", **kwargs):
+        if self.session is None:
+            raise RuntimeError("Session not initialized. Call await client.initialize()")
+
+        async with self.session.request(method, url, **kwargs) as resp:
             status = resp.status
-            data = await resp.json()
-            
+            try:
+                data = await resp.json()
+            except aiohttp.ContentTypeError:
+                data = await resp.text()
             return data, status
+
 
     async def get_player(self,tag):
         """Get a player by tag"""
@@ -64,9 +85,7 @@ class Client:
                 brrs.append(br)
 
                 battleLog = await self.get_battle_log(tag)
-                #print("each", each)
 
-            #Pl = Player(player['name'],player['tag'],player['nameColor'],player['icon']['id'],player['trophies'],player['expLevel'],player['expPoints'],cl,player['highestTrophies'],player['soloVictories'],player['duoVictories'],player['3vs3Victories'],player['bestRoboRumbleTime'],player['bestTimeAsBigBrawler'],brrs,battleLog)
             Pl = Player(player['name'],player['tag'],player['icon']['id'],player['trophies'],player['expLevel'],player['expPoints'],cl,player['highestTrophies'],player['soloVictories'],player['duoVictories'],player['3vs3Victories'],player['bestRoboRumbleTime'],player['bestTimeAsBigBrawler'],brrs,battleLog)
 
             return Pl
