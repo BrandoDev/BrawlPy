@@ -4,7 +4,8 @@ import asyncio
 client = brawlpy.Client('your_token_here') # Enter your token here
 
 async def brawlPy():
-    player = await client.get_player("JP20RUR2")
+    async with client:
+        player = await client.get_player("JP20RUR2")
     
     print(player)
 
