@@ -1,4 +1,4 @@
-from .errors import *
+from .errors import TagNotFoundError
 
 
 def checkTag(tag: str):

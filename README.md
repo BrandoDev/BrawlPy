@@ -22,7 +22,7 @@ pip install brawlpy
 ```
 To install the development version run the following command:
 ```
-pip install git+https://github.com/PyStarr/BrawlPy
+pip install git+https://github.com/BrandoDev/BrawlPy
 ```
 
 ## Example
