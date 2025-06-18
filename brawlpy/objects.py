@@ -1,12 +1,9 @@
 import os
-import json
-from .icons import brawlers as br_icons
 
-__location__ = os.path.realpath(
-    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
 
 class Player:
-
     """
     Player object with all its attribute
 
@@ -25,10 +22,27 @@ class Player:
     club - The club that the player is in
     """
 
-    def __init__(self,name,tag,icon_id,trophies,expLevel,expPoints,club,highestTrophies,soloVictories,duoVictories,teamVictories,bestRoboRumbleTime,bestTimeAsBigBrawler,brawlers,battleLog):
+    def __init__(
+        self,
+        name,
+        tag,
+        icon_id,
+        trophies,
+        expLevel,
+        expPoints,
+        club,
+        highestTrophies,
+        soloVictories,
+        duoVictories,
+        teamVictories,
+        bestRoboRumbleTime,
+        bestTimeAsBigBrawler,
+        brawlers,
+        battleLog,
+    ):
         self.name = name
         self.tag = tag
-        #self.nameColor = nameColor
+        # self.nameColor = nameColor
         self.icon_id = icon_id
         self.trophies = trophies
         self.expLevel = expLevel
@@ -49,8 +63,8 @@ class Player:
     def __str__(self):
         return "{0.name} ({0.tag})".format(self)
 
-class Club:
 
+class Club:
     """
     Club object with all its attribute
 
@@ -63,7 +77,9 @@ class Club:
     members - A list a all the members of the club
     """
 
-    def __init__(self,tag,name,description,type,badgeID,requiredTrophies,trophies,members):
+    def __init__(
+        self, tag, name, description, type, badgeID, requiredTrophies, trophies, members
+    ):
         self.tag = tag
         self.name = name
         self.description = description
@@ -79,8 +95,8 @@ class Club:
     def __str__(self):
         return "{0.name} ({0.tag})".format(self)
 
-class ClubMember:
 
+class ClubMember:
     """
     ClubMember object with all its attribute
 
@@ -92,14 +108,14 @@ class ClubMember:
     trophies - The total trophies of the member
     """
 
-    def __init__(self,name,icon_id,tag,role,nameColor,trophies):
+    def __init__(self, name, icon_id, tag, role, nameColor, trophies):
         self.name = name
         self.icon_id = icon_id
         self.tag = tag
         self.role = role
         self.nameColor = nameColor
         self.trophies = trophies
-    
+
     def __repr__(self):
         return "<ClubMember name='{0.name}' tag='{0.tag}' role='{0.role}'>".format(self)
 
@@ -108,7 +124,6 @@ class ClubMember:
 
 
 class ClubRanking:
-
     """
     ClubRanking object with all its attribute
 
@@ -120,7 +135,7 @@ class ClubRanking:
     memberCount - The amount of the member the club has
     """
 
-    def __init__(self,tag,name,badgeID,trophies,rank,memberCount):
+    def __init__(self, tag, name, badgeID, trophies, rank, memberCount):
         self.tag = tag
         self.name = name
         self.badgeID = badgeID
@@ -134,8 +149,8 @@ class ClubRanking:
     def __str__(self):
         return "{0.rank}. {0.name} ({0.tag})".format(self)
 
-class PlayerRanking:
 
+class PlayerRanking:
     """
     PlayerRanking object with all its attribute
 
@@ -148,7 +163,7 @@ class PlayerRanking:
     clubName - The name of the club the player is in
     """
 
-    def __init__(self,name,tag,nameColor,icon_id,trophies,rank,clubName):
+    def __init__(self, name, tag, nameColor, icon_id, trophies, rank, clubName):
         self.name = name
         self.tag = tag
         self.nameColor = nameColor
@@ -165,7 +180,6 @@ class PlayerRanking:
 
 
 class BrawlerRanking:
-
     """
     BrawlerRanking object with all its attribute
 
@@ -179,9 +193,19 @@ class BrawlerRanking:
     clubName - The Name of the player's Club
     """
 
-    def __init__(self,brawler,playerTag,playerName,playerNameColor,playerIconID,trophies,rank,clubName):
+    def __init__(
+        self,
+        brawler,
+        playerTag,
+        playerName,
+        playerNameColor,
+        playerIconID,
+        trophies,
+        rank,
+        clubName,
+    ):
         self.brawler = brawler
-        self.playerTag = playerTag 
+        self.playerTag = playerTag
         self.playerName = playerName
         self.playerNameColor = playerNameColor
         self.playerIconID = playerIconID
@@ -190,13 +214,15 @@ class BrawlerRanking:
         self.clubName = clubName
 
     def __repr__(self):
-        return "<Player name='{0.playerName}' tag='{0.playerTag}' rank={0.rank} brawler={0.brawler}>".format(self)
+        return "<Player name='{0.playerName}' tag='{0.playerTag}' rank={0.rank} brawler={0.brawler}>".format(
+            self
+        )
 
     def __str__(self):
         return "{0.rank}. {0.playerName} ({0.playerTag}) => {0.brawler}".format(self)
 
-class Event:
 
+class Event:
     """
     Event object with all its attribute
 
@@ -207,21 +233,21 @@ class Event:
     endTime - The time when the event will be out of rotation
     """
 
-    def __init__(self,id,mode,map,startTime,endTime):
+    def __init__(self, id, mode, map, startTime, endTime):
         self.id = id
         self.mode = mode
         self.map = map
         self.startTime = startTime
         self.endTime = endTime
-    
+
     def __repr__(self):
         return "<Event mode='{0.mode}' map='{0.map}' id={0.id}>".format(self)
 
     def __str__(self):
         return "{0.mode} => {0.map} ({0.id})".format(self)
 
-class Brawler:
 
+class Brawler:
     """
     Brawler object with all its attribute
 
@@ -232,13 +258,13 @@ class Brawler:
     gadgets - A list of all the gagdets the brawler has
     """
 
-    def __init__(self,name,id,starPowers,gadgets):
+    def __init__(self, name, id, starPowers, gadgets):
         self.name = name
         self.id = id
         self.starPowers = starPowers
         self.icon_url = self.get_icon_url()
         self.gadgets = gadgets
-    
+
     def __repr__(self):
         return "<Brawler name='{0.name}' id='{0.id}'>".format(self)
 
@@ -246,11 +272,10 @@ class Brawler:
         return "{0.name} ({0.id})".format(self)
 
     def get_icon_url(self):
-        
         return None
 
-class PlayerBrawler:
 
+class PlayerBrawler:
     """
     PlayerBrawler object with all its attribute
 
@@ -265,7 +290,18 @@ class PlayerBrawler:
     gears - A list of all the gears the player has on this brawler
     """
 
-    def __init__(self,name,id,power,rank,trophies,highestTrophies,gadgets,gears,starPowers):
+    def __init__(
+        self,
+        name,
+        id,
+        power,
+        rank,
+        trophies,
+        highestTrophies,
+        gadgets,
+        gears,
+        starPowers,
+    ):
         self.name = name
         self.id = id
         self.icon_id = self.get_icon_url()
@@ -276,20 +312,20 @@ class PlayerBrawler:
         self.gadgets = gadgets
         self.gears = gears
         self.starPowers = starPowers
-    
+
     def __repr__(self):
-        return "<Brawler name='{0.name}' rank={0.rank} trophies={0.trophies}>".format(self)
+        return "<Brawler name='{0.name}' rank={0.rank} trophies={0.trophies}>".format(
+            self
+        )
 
     def __str__(self):
         return "{0.name} ({0.id})".format(self)
 
     def get_icon_url(self):
-
         return None
 
 
 class Gadget:
-    
     """
     Gadget object with all its attribute
 
@@ -297,18 +333,18 @@ class Gadget:
     id - The ID of the gadget
     """
 
-    def __init__(self,name,id):
+    def __init__(self, name, id):
         self.name = name
         self.id = id
-    
+
     def __repr__(self):
         return "<Gadget name='{0.name}' id='{0.id}'>".format(self)
 
     def __str__(self):
         return "{0.name} ({0.id})".format(self)
 
+
 class StarPower:
-    
     """
     StarPower object with all its attribute
 
@@ -316,18 +352,18 @@ class StarPower:
     id - The ID of the star power
     """
 
-    def __init__(self,name,id):
+    def __init__(self, name, id):
         self.name = name
         self.id = id
-    
+
     def __repr__(self):
         return "<StarPower name='{0.name}' id='{0.id}'>".format(self)
 
     def __str__(self):
         return "{0.name} ({0.id})".format(self)
 
+
 class Gear:
-    
     """
     Gear object with all its attribute
 
@@ -336,13 +372,13 @@ class Gear:
     level - The level of the gear
     """
 
-    def __init__(self,name,id,level):
+    def __init__(self, name, id, level):
         self.name = name
         self.id = id
         self.level = level
-    
+
     def __repr__(self):
         return "<Gear name='{0.name}' id='{0.id}' level={0.level}>".format(self)
-    
+
     def __str__(self):
         return "level {0.level} gear {0.name} ({0.id})".format(self)
