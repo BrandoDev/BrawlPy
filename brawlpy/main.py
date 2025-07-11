@@ -139,7 +139,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -160,7 +160,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -243,7 +243,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -255,10 +255,10 @@ class Client:
         events, status = await self.request(url)
 
         if 300 > status >= 200:
-            List = []
+            event_list = []
 
             for each in events:
-                l = Event(
+                event = Event(
                     each["event"]["id"],
                     each["event"]["mode"],
                     each["event"]["map"],
@@ -266,9 +266,9 @@ class Client:
                     each["endTime"],
                 )
 
-                List.append(l)
+                event_list.append(event)
 
-            return List
+            return event_list
 
         elif status == 403:
             raise Forbidden(status, url, events["message"])
@@ -277,7 +277,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -322,7 +322,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -350,6 +350,7 @@ class Client:
                     cl = cl["name"]
                 rankgs.append(
                     BrawlerRanking(
+                        "",
                         each["tag"],
                         each["name"],
                         each["nameColor"],
@@ -369,7 +370,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -407,7 +408,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
@@ -442,7 +443,7 @@ class Client:
         elif status == 429:
             raise RateLimitError(status, url)
         elif status == 500:
-            raise UnexpectedError(status, url)
+            raise UnexpectedError(status, url, "")
         elif status == 503:
             raise ServerError(status, url)
 
