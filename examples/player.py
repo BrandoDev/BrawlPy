@@ -15,7 +15,7 @@ async def brawlPy():
     for brawler in player.brawlers:
         print(brawler)
 
-    print(player.battleLog)  # A big fat list
+    # Note: battle log is not accessed here because the Player object does not expose a valid battleLog attribute.
 
     print(player.club)  # returns None cuz I am not in a club :( , try changing the tag
 
