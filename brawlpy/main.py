@@ -110,8 +110,6 @@ class Client:
                 )
                 brrs.append(br)
 
-                battleLog = await self.get_battle_log(tag)
-
             Pl = Player(
                 player["name"],
                 player["tag"],
@@ -127,7 +125,6 @@ class Client:
                 player["bestRoboRumbleTime"],
                 player["bestTimeAsBigBrawler"],
                 brrs,
-                battleLog,
             )
 
             return Pl
