@@ -38,7 +38,6 @@ class Player:
         bestRoboRumbleTime,
         bestTimeAsBigBrawler,
         brawlers,
-        battleLog,
     ):
         self.name = name
         self.tag = tag
@@ -55,7 +54,6 @@ class Player:
         self.bestRoboRumbleTime = bestRoboRumbleTime
         self.brawlers = brawlers
         self.club = club
-        self.battleLog = battleLog
 
     def __repr__(self):
         return "<Player name='{0.name}' tag='{0.tag}'>".format(self)
