@@ -9,35 +9,35 @@ A basic wrapper for the Brawl Stars API.
 from .API import API
 from .main import Client
 from .objects import (
-    Player,
+    Brawler,
+    BrawlerRanking,
     Club,
     ClubMember,
     ClubRanking,
-    PlayerRanking,
-    BrawlerRanking,
     Event,
-    Brawler,
-    PlayerBrawler,
     Gadget,
-    StarPower,
     Gear,
+    Player,
+    PlayerBrawler,
+    PlayerRanking,
+    StarPower,
 )
 
 __all__ = [
     "API",
+    "Brawler",
+    "BrawlerRanking",
     "Client",
-    "Player",
     "Club",
     "ClubMember",
     "ClubRanking",
-    "PlayerRanking",
-    "BrawlerRanking",
     "Event",
-    "Brawler",
-    "PlayerBrawler",
     "Gadget",
-    "StarPower",
     "Gear",
+    "Player",
+    "PlayerBrawler",
+    "PlayerRanking",
+    "StarPower",
 ]
 
 __title__ = "brawlpy"

@@ -1,32 +1,32 @@
 from xml.dom import NotFoundErr
 
+import aiohttp
+
 from .API import API
 from .errors import (
-    Forbidden,
-    TagNotFoundError,
-    RateLimitError,
-    UnexpectedError,
-    ServerError,
     BrawlerNotFound,
     CountryNotFound,
+    Forbidden,
+    RateLimitError,
+    ServerError,
+    TagNotFoundError,
+    UnexpectedError,
 )
-from .utils import checkTag
-
-import aiohttp
 from .objects import (
-    Player,
+    Brawler,
+    BrawlerRanking,
     Club,
     ClubMember,
     ClubRanking,
-    PlayerRanking,
-    BrawlerRanking,
     Event,
-    Brawler,
-    PlayerBrawler,
     Gadget,
-    StarPower,
     Gear,
+    Player,
+    PlayerBrawler,
+    PlayerRanking,
+    StarPower,
 )
+from .utils import checkTag
 
 
 class Client:
@@ -284,7 +284,7 @@ class Client:
         url = self.api.RANKINGS.format(countryCode=countryCode) + "/players"
 
         if limit:
-            url += "?limit={}".format(limit)
+            url += f"?limit={limit}"
 
         rankings, status = await self.request(url)
 
@@ -326,12 +326,12 @@ class Client:
     async def get_brawlers_rankings(self, brawlerID, countryCode="global", limit=None):
         """Get top rankings based on brawlers"""
 
-        url = self.api.RANKINGS.format(countryCode=countryCode) + "/brawlers/{}".format(
-            brawlerID
+        url = (
+            self.api.RANKINGS.format(countryCode=countryCode) + f"/brawlers/{brawlerID}"
         )
 
         if limit:
-            url += "?limit={}".format(limit)
+            url += f"?limit={limit}"
 
         rankings, status = await self.request(url)
 
@@ -377,7 +377,7 @@ class Client:
         url = self.api.RANKINGS.format(countryCode=countryCode) + "/clubs"
 
         if limit:
-            url += "?limit={}".format(limit)
+            url += f"?limit={limit}"
 
         rankings, status = await self.request(url)
 

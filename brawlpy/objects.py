@@ -56,10 +56,10 @@ class Player:
         self.club = club
 
     def __repr__(self):
-        return "<Player name='{0.name}' tag='{0.tag}'>".format(self)
+        return f"<Player name='{self.name}' tag='{self.tag}'>"
 
     def __str__(self):
-        return "{0.name} ({0.tag})".format(self)
+        return f"{self.name} ({self.tag})"
 
 
 class Club:
@@ -88,10 +88,10 @@ class Club:
         self.members = members
 
     def __repr__(self):
-        return "<Club name='{0.name}' tag='{0.tag}'>".format(self)
+        return f"<Club name='{self.name}' tag='{self.tag}'>"
 
     def __str__(self):
-        return "{0.name} ({0.tag})".format(self)
+        return f"{self.name} ({self.tag})"
 
 
 class ClubMember:
@@ -115,10 +115,10 @@ class ClubMember:
         self.trophies = trophies
 
     def __repr__(self):
-        return "<ClubMember name='{0.name}' tag='{0.tag}' role='{0.role}'>".format(self)
+        return f"<ClubMember name='{self.name}' tag='{self.tag}' role='{self.role}'>"
 
     def __str__(self):
-        return "{0.name} ({0.tag}) => {0.role}".format(self)
+        return f"{self.name} ({self.tag}) => {self.role}"
 
 
 class ClubRanking:
@@ -142,10 +142,10 @@ class ClubRanking:
         self.memberCount = memberCount
 
     def __repr__(self):
-        return "<Club name='{0.name}' tag='{0.tag}' rank={0.rank}>".format(self)
+        return f"<Club name='{self.name}' tag='{self.tag}' rank={self.rank}>"
 
     def __str__(self):
-        return "{0.rank}. {0.name} ({0.tag})".format(self)
+        return f"{self.rank}. {self.name} ({self.tag})"
 
 
 class PlayerRanking:
@@ -171,10 +171,10 @@ class PlayerRanking:
         self.clubName = clubName
 
     def __repr__(self):
-        return "<Club name='{0.name}' tag='{0.tag}'>".format(self)
+        return f"<Club name='{self.name}' tag='{self.tag}'>"
 
     def __str__(self):
-        return "{0.rank}. {0.name} ({0.tag})".format(self)
+        return f"{self.rank}. {self.name} ({self.tag})"
 
 
 class BrawlerRanking:
@@ -212,12 +212,10 @@ class BrawlerRanking:
         self.clubName = clubName
 
     def __repr__(self):
-        return "<Player name='{0.playerName}' tag='{0.playerTag}' rank={0.rank} brawler={0.brawler}>".format(
-            self
-        )
+        return f"<Player name='{self.playerName}' tag='{self.playerTag}' rank={self.rank} brawler={self.brawler}>"
 
     def __str__(self):
-        return "{0.rank}. {0.playerName} ({0.playerTag}) => {0.brawler}".format(self)
+        return f"{self.rank}. {self.playerName} ({self.playerTag}) => {self.brawler}"
 
 
 class Event:
@@ -239,10 +237,10 @@ class Event:
         self.endTime = endTime
 
     def __repr__(self):
-        return "<Event mode='{0.mode}' map='{0.map}' id={0.id}>".format(self)
+        return f"<Event mode='{self.mode}' map='{self.map}' id={self.id}>"
 
     def __str__(self):
-        return "{0.mode} => {0.map} ({0.id})".format(self)
+        return f"{self.mode} => {self.map} ({self.id})"
 
 
 class Brawler:
@@ -264,10 +262,10 @@ class Brawler:
         self.gadgets = gadgets
 
     def __repr__(self):
-        return "<Brawler name='{0.name}' id='{0.id}'>".format(self)
+        return f"<Brawler name='{self.name}' id='{self.id}'>"
 
     def __str__(self):
-        return "{0.name} ({0.id})".format(self)
+        return f"{self.name} ({self.id})"
 
     def get_icon_url(self):
         return None
@@ -312,12 +310,10 @@ class PlayerBrawler:
         self.starPowers = starPowers
 
     def __repr__(self):
-        return "<Brawler name='{0.name}' rank={0.rank} trophies={0.trophies}>".format(
-            self
-        )
+        return f"<Brawler name='{self.name}' rank={self.rank} trophies={self.trophies}>"
 
     def __str__(self):
-        return "{0.name} ({0.id})".format(self)
+        return f"{self.name} ({self.id})"
 
     def get_icon_url(self):
         return None
@@ -336,10 +332,10 @@ class Gadget:
         self.id = id
 
     def __repr__(self):
-        return "<Gadget name='{0.name}' id='{0.id}'>".format(self)
+        return f"<Gadget name='{self.name}' id='{self.id}'>"
 
     def __str__(self):
-        return "{0.name} ({0.id})".format(self)
+        return f"{self.name} ({self.id})"
 
 
 class StarPower:
@@ -355,10 +351,10 @@ class StarPower:
         self.id = id
 
     def __repr__(self):
-        return "<StarPower name='{0.name}' id='{0.id}'>".format(self)
+        return f"<StarPower name='{self.name}' id='{self.id}'>"
 
     def __str__(self):
-        return "{0.name} ({0.id})".format(self)
+        return f"{self.name} ({self.id})"
 
 
 class Gear:
@@ -376,7 +372,7 @@ class Gear:
         self.level = level
 
     def __repr__(self):
-        return "<Gear name='{0.name}' id='{0.id}' level={0.level}>".format(self)
+        return f"<Gear name='{self.name}' id='{self.id}' level={self.level}>"
 
     def __str__(self):
-        return "level {0.level} gear {0.name} ({0.id})".format(self)
+        return f"level {self.level} gear {self.name} ({self.id})"
