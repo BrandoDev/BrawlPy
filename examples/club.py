@@ -1,5 +1,6 @@
-import brawlpy
 import asyncio
+
+import brawlpy
 
 client = brawlpy.Client("your_token_here")  # Enter your token here
 
