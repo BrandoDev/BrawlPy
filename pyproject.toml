@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brawlpy"
+version = "1.3.0"
+description = "A Basic wrapper for the Brawl Stars API"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "PyStarr", email = "pystarrorg@gmail.com" }]
+keywords = ["wrapper", "brawlstars", "api", "brawlstarsApiWrapper"]
+dependencies = [
+    "aiohttp",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.14",
+]
+
+[project.urls]
+Homepage = "https://github.com/PyStarr/BrawlPy"
+Source = "https://github.com/PyStarr/BrawlPy"
+Issues = "https://github.com/PyStarr/BrawlPy/issues"
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.6",
+  "ty>=0.0.17",
+  "bandit>=1.7.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["brawlpy*"]
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["ASYNC", "B", "E", "F", "I", "PIE", "RUF", "SIM", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"brawlpy/__init__.py" = ["F401"]
+
+[tool.ty.environment]
+python-version = "3.14"
+
+[tool.ty.src]
+include = ["brawlpy"]
